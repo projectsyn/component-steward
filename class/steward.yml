@@ -5,7 +5,7 @@ parameters:
     images:
       steward:
         image: docker.io/vshn/steward
-        tag: 'v0.0.1@sha256:d8418e328b368ffb1b16b60fba95e2b4edda3fddf6e8cca4f22f76694d732450'
+        tag: 'v0.0.2@sha256:8395c0d9fd539d1c15019f048fb49bbb8e84f63543b4f6433563a301477e46da'
   kapitan:
     compile:
     - output_path: steward
