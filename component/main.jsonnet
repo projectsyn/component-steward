@@ -34,7 +34,10 @@ local secret = kube.Secret('steward') {
 
 local deployment = kube.Deployment('steward') {
     metadata+: {
-        namespace: params.namespace
+        namespace: params.namespace,
+        labels: {
+            app: 'steward'
+        },
     },
     spec+: {
         template+: {
@@ -55,9 +58,9 @@ local deployment = kube.Deployment('steward') {
                         securityContext: {
                             runAsNonRoot: true
                         },
-                        serviceAccountName: service_account.metadata.name
                     },
                 },
+                serviceAccountName: service_account.metadata.name
             },
         },
     },
