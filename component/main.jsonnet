@@ -67,7 +67,6 @@ local deployment = kube.Deployment('steward') {
 };
 
 {
-    '00_namespace': kube.Namespace(params.namespace),
     '01_rbac': [cluster_role, service_account, cluster_role_binding],
     '05_secret': secret,
     '10_deployment': deployment,
