@@ -27,7 +27,7 @@ local secret = kube.Secret('steward') {
     metadata+: {
         namespace: params.namespace
     },
-    data_: {
+    stringData: {
         token: params.token
     },
 };

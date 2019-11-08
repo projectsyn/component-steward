@@ -2,6 +2,7 @@ parameters:
   steward:
     namespace: syn
     api_url: 'https://synventory.syn.vshn.net/'
+    token: '?{vaultkv:${customer:name}/${cluster:name}/steward/token}'
     images:
       steward:
         image: docker.io/vshn/steward
