@@ -6,4 +6,4 @@ parameters:
     images:
       steward:
         image: docker.io/vshn/steward
-        tag: 'v0.0.2@sha256:8395c0d9fd539d1c15019f048fb49bbb8e84f63543b4f6433563a301477e46da'
+        tag: 'v0.0.3@sha256:6beb78d10e9d58213be548536225922be77e0ac65d3d9cc9fd55281cbf8a134c'
