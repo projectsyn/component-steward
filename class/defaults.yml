@@ -5,5 +5,5 @@ parameters:
     token: '?{vaultkv:${customer:name}/${cluster:name}/steward/token}'
     images:
       steward:
-        image: docker.io/vshn/steward
-        tag: 'v0.0.3@sha256:6beb78d10e9d58213be548536225922be77e0ac65d3d9cc9fd55281cbf8a134c'
+        image: docker.io/projectsyn/steward
+        tag: 'v0.1.0'

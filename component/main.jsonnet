@@ -55,6 +55,7 @@ local deployment = kube.Deployment('steward') {
             },
             env_+: {
               STEWARD_API: params.api_url,
+              STEWARD_CLUSTER_ID: inv.parameters.cluster.name,
               STEWARD_TOKEN: kube.SecretKeyRef(secret, 'token'),
               STEWARD_NAMESPACE: kube.FieldRef('metadata.namespace'),
             },
