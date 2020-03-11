@@ -39,7 +39,8 @@ local deployment = kube.Deployment('steward') {
   metadata+: {
     namespace: params.namespace,
     labels: {
-      app: 'steward',
+      'app.kubernetes.io/name': 'steward',
+      'app.kubernetes.io/managed-by': 'syn',
     },
   },
   spec+: {
