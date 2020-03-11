@@ -6,4 +6,4 @@ parameters:
     images:
       steward:
         image: docker.io/projectsyn/steward
-        tag: 'v0.1.0'
+        tag: 'v0.1.0@sha256:074b93405e397ca1dd322bcaee59e55809e7e61040d30a1dbff869ad2f0985c0'
