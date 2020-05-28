@@ -1,4 +1,5 @@
 // main template for steward
+local com = import 'lib/commodore.libjsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
 local kube = import 'lib/kube.libjsonnet';
 local inv = kap.inventory();
@@ -54,7 +55,7 @@ local deployment = kube.Deployment('steward') {
               requests: { cpu: '100m', memory: '32Mi' },
               limits: { cpu: '200m', memory: '64Mi' },
             },
-            env_+: {
+            env_+: com.proxyVars {
               STEWARD_API: params.api_url,
               STEWARD_CLUSTER_ID: inv.parameters.cluster.name,
               STEWARD_TOKEN: kube.SecretKeyRef(secret, 'token'),
