@@ -7,5 +7,5 @@ local argocd = import 'lib/argocd.libjsonnet';
 local app = argocd.App('steward', params.namespace, secrets=true);
 
 {
-  'steward': app,
+  steward: app,
 }
