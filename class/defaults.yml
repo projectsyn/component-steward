@@ -1,0 +1,9 @@
+parameters:
+  steward:
+    namespace: syn
+    api_url: 'https://api.syn.vshn.net/'
+    token: '?{vaultkv:${customer:name}/${cluster:name}/steward/token}'
+    images:
+      steward:
+        image: docker.io/projectsyn/steward
+        tag: 'v0.1.2@sha256:84db4eb4a87f442e75f9996c33be660811be7af9a1b753228f5a99d527f4b284'

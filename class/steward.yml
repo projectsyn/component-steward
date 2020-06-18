@@ -1,9 +1,10 @@
 parameters:
-  steward:
-    namespace: syn-steward
-
   kapitan:
     compile:
+      - input_paths:
+          - steward/component/app.jsonnet
+        input_type: jsonnet
+        output_path: apps/
       - output_path: steward
         input_type: jsonnet
         output_type: yaml
