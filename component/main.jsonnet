@@ -60,6 +60,7 @@ local deployment = kube.Deployment('steward') {
               STEWARD_CLUSTER_ID: inv.parameters.cluster.name,
               STEWARD_TOKEN: kube.SecretKeyRef(secret, 'token'),
               STEWARD_NAMESPACE: kube.FieldRef('metadata.namespace'),
+              STEWARD_ARGO_IMAGE: params.images.argocd.image + ':' + params.images.argocd.tag,
             },
             securityContext: {
               runAsNonRoot: true,

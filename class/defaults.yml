@@ -7,3 +7,6 @@ parameters:
       steward:
         image: docker.io/projectsyn/steward
         tag: 'v0.1.2@sha256:84db4eb4a87f442e75f9996c33be660811be7af9a1b753228f5a99d527f4b284'
+      argocd:
+        image: docker.io/argoproj/argocd
+        tag: 'v1.7.4@sha256:d8a356b76d8b1bd810c9381f88ec0ae8cc71ad0ec2e22910a47f5c56417a40d0'
