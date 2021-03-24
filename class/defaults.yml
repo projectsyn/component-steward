@@ -9,4 +9,4 @@ parameters:
         tag: 'v0.3.1@sha256:066129ff4e932cd1f06097f637c6b2a993454f5bf0862ba530d8439ceb629129'
       argocd:
         image: docker.io/argoproj/argocd
-        tag: 'v1.7.4@sha256:d8a356b76d8b1bd810c9381f88ec0ae8cc71ad0ec2e22910a47f5c56417a40d0'
+        tag: 'v1.8.7@sha256:ce34acd7bac34d5a4fdbf96faf11fa5e01a7f96a27041d4472ca498886000cbf'
