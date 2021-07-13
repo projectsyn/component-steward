@@ -8,8 +8,8 @@ local params = inv.parameters.steward;
 
 local cluster_role = kube.ClusterRole('syn-admin') {
   rules: [
-    { apiGroups: ['*'], resources: ['*'], verbs: ['*'] },
-    { nonResourceURLs: ['*'], verbs: ['*'] },
+    { apiGroups: [ '*' ], resources: [ '*' ], verbs: [ '*' ] },
+    { nonResourceURLs: [ '*' ], verbs: [ '*' ] },
   ],
 };
 
@@ -20,7 +20,7 @@ local service_account = kube.ServiceAccount('steward') {
 };
 
 local cluster_role_binding = kube.ClusterRoleBinding('syn-steward') {
-  subjects_: [service_account],
+  subjects_: [ service_account ],
   roleRef_: cluster_role,
 };
 
@@ -74,7 +74,7 @@ local deployment = kube.Deployment('steward') {
 };
 
 {
-  '01_rbac': [cluster_role, service_account, cluster_role_binding],
+  '01_rbac': [ cluster_role, service_account, cluster_role_binding ],
   '05_secret': secret,
   '10_deployment': deployment,
 }
