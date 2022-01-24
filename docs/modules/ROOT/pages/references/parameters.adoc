@@ -1,0 +1,72 @@
+= Parameters
+
+The parent key for all of the following parameters is `steward`.
+
+== `namespace`
+
+[horizontal]
+type:: string
+default:: `syn`
+
+The namespace in which to deploy this component.
+
+NOTE: This component doesn't create the provided namespace.
+
+== `api_url`
+
+[horizontal]
+type:: string
+default:: `https://api.syn.vshn.net/docs[https://api.syn.vshn.net/]`
+
+The URL of the Lieutenant API to which Steward should connect.
+
+== `token`
+
+[horizontal]
+type:: string
+default:: `?{vaultkv:${customer:name}/${cluster:name}/steward/token}`
+
+The API token for the Lieutenant API to which Steward should connect.
+By default, the component is configured to fetch the API token from Vault.
+
+== `resources`
+
+[horizontal]
+type:: dict
+default::
++
+[source,yaml]
+----
+requests:
+  cpu: 100m
+  memory: 32Mi
+limits:
+  cpu: 200m
+  memory: 64Mi
+----
+
+This parameter allows users to configure the resource requests and limits for the Steward pod.
+
+NOTE: The provided value isn't validated and is used directly as the container's `resources`.
+
+== `images`
+
+[horizontal]
+type:: dict
+defaults:: https://github.com/projectsyn/component-steward/blob/master/class/defaults.yml[See `class/defaults.yml`]
+
+The Steward and ArgoCD container image versions which the component should use.
+
+== Example
+
+[source,yaml]
+----
+api_url: 'https://lieutenant.example.com'
+resources:
+  requests:
+    cpu: 200m
+    memory: 34Mi
+  limits:
+    cpu: 200m
+    memory: 64Mi
+----
