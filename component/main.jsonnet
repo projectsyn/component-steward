@@ -51,10 +51,7 @@ local deployment = kube.Deployment('steward') {
           steward: kube.Container('steward') {
             image: params.images.steward.image + ':' + params.images.steward.tag,
             imagePullPolicy: 'Always',
-            resources: {
-              requests: { cpu: '100m', memory: '32Mi' },
-              limits: { cpu: '200m', memory: '64Mi' },
-            },
+            resources: params.resources,
             env_+: com.proxyVars {
               STEWARD_API: params.api_url,
               STEWARD_CLUSTER_ID: inv.parameters.cluster.name,
