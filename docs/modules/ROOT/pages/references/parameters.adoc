@@ -24,7 +24,7 @@ The URL of the Lieutenant API to which Steward should connect.
 
 [horizontal]
 type:: string
-default:: `?{vaultkv:${customer:name}/${cluster:name}/steward/token}`
+default:: `?{vaultkv:${cluster:tenant}/${cluster:name}/steward/token}`
 
 The API token for the Lieutenant API to which Steward should connect.
 By default, the component is configured to fetch the API token from Vault.
