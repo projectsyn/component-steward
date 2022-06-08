@@ -16,4 +16,4 @@ parameters:
         tag: 'v0.7.1@sha256:5ede4e440cb526afc9752e8a56f91e2baa4f05804ba0e775608a2fc1068e01eb'
       argocd:
         image: quay.io/argoproj/argocd
-        tag: 'v2.2.2@sha256:358c244c96313ca3bf9f588dc870d8123fc22ffa5c231c57da10f77b8d671c66'
+        tag: 'v2.3.4@sha256:85d55980e70f8f7073e4ce529a7bbcf6d55e51f8a7fc4b45d698f0a7ffef0fea'
