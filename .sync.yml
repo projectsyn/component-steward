@@ -1,8 +1,4 @@
 :global:
-  componentName: steward
+  componentName: Steward
   githubUrl: https://github.com/projectsyn/component-steward
   feature_goUnitTests: false
-
-docs/antora.yml:
-  name: steward
-  title: Steward
