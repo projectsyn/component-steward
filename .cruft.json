@@ -1,0 +1,21 @@
+{
+  "template": "https://github.com/projectsyn/commodore-component-template.git",
+  "commit": "e6c4fd69190db1ad12e941d578b9423d0e2f993c",
+  "checkout": "main",
+  "context": {
+    "cookiecutter": {
+      "name": "Steward",
+      "slug": "steward",
+      "parameter_key": "steward",
+      "test_cases": "defaults",
+      "add_golden": "n",
+      "add_matrix": "n",
+      "add_go_unit": "n",
+      "github_owner": "projectsyn",
+      "github_name": "component-steward",
+      "github_url": "https://github.com/projectsyn/component-steward",
+      "_template": "https://github.com/projectsyn/commodore-component-template.git"
+    }
+  },
+  "directory": null
+}
