@@ -1,4 +1,0 @@
-:global:
-  componentName: Steward
-  githubUrl: https://github.com/projectsyn/component-steward
-  feature_goUnitTests: false
