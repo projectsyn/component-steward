@@ -13,7 +13,7 @@ parameters:
     images:
       steward:
         image: docker.io/projectsyn/steward
-        tag: 'v0.9.2@sha256:24fe552a749a2bf9e6c93fba98d2de72af7bfb495f24a04e54fda1f7e9cbba47'
+        tag: 'v0.10.0@sha256:97d526bf5493e9dd8923818ff70ae7c778f0b726efbafb1f42f8b6316fd4cd03'
       argocd:
         image: quay.io/argoproj/argocd
         tag: 'v2.3.12@sha256:57474c3c31d2e3606e9c7dad2e449e604a48ac8e9aaaa413274aed41e6550e59'
