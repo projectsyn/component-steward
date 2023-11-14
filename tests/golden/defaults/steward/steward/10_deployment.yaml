@@ -1,0 +1,69 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations: {}
+  labels:
+    app.kubernetes.io/managed-by: syn
+    app.kubernetes.io/name: steward
+  name: steward
+  namespace: syn
+spec:
+  minReadySeconds: 30
+  replicas: 1
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app.kubernetes.io/managed-by: syn
+      app.kubernetes.io/name: steward
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      annotations: {}
+      labels:
+        app.kubernetes.io/managed-by: syn
+        app.kubernetes.io/name: steward
+    spec:
+      containers:
+        - args: []
+          env:
+            - name: STEWARD_API
+              value: https://api.syn.vshn.net/
+            - name: STEWARD_ARGO_IMAGE
+              value: quay.io/argoproj/argocd:v2.3.12@sha256:57474c3c31d2e3606e9c7dad2e449e604a48ac8e9aaaa413274aed41e6550e59
+            - name: STEWARD_CLUSTER_ID
+              value: c-green-test-1234
+            - name: STEWARD_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  apiVersion: v1
+                  fieldPath: metadata.namespace
+            - name: STEWARD_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  key: token
+                  name: steward
+          image: docker.io/projectsyn/steward:v0.10.0@sha256:97d526bf5493e9dd8923818ff70ae7c778f0b726efbafb1f42f8b6316fd4cd03
+          imagePullPolicy: Always
+          name: steward
+          ports: []
+          resources:
+            limits:
+              cpu: 200m
+              memory: 64Mi
+            requests:
+              cpu: 100m
+              memory: 32Mi
+          securityContext:
+            runAsNonRoot: true
+          stdin: false
+          tty: false
+          volumeMounts: []
+      imagePullSecrets: []
+      initContainers: []
+      serviceAccountName: steward
+      terminationGracePeriodSeconds: 30
+      volumes: []
