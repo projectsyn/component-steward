@@ -57,6 +57,26 @@ defaults:: https://github.com/projectsyn/component-steward/blob/master/class/def
 
 The Steward and ArgoCD container image versions which the component should use.
 
+== `additional_facts`
+
+[horizontal]
+type:: dict
+default:: `{}`
+example::
++
+[source,yaml]
+----
+additional_facts:
+  myIdFromHierarchy: mx7bMF3VIfVpGhMZDnoW65oG08Wv9ICYXetH5DNM
+  glusterVersion:
+    major: 11
+    minor: 1
+----
+
+Additional facts to be added to the dynamic facts Steward provides to Lieutenant.
+Objects are serialized to JSON.
+Dynamic facts implemented in Steward can't be overridden.
+
 == Example
 
 [source,yaml]

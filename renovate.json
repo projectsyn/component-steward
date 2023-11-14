@@ -7,6 +7,14 @@
   "ignorePaths": [
     ".github/**"
   ],
+  "postUpgradeTasks": {
+    "commands": [
+      "make gen-golden"
+    ],
+    "fileFilters": [ "tests/golden/**" ],
+    "executionMode": "update"
+  },
+  "suppressNotifications": [ "artifactErrors" ],
   "labels": [
     "dependency"
   ],

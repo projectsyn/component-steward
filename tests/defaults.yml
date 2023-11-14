@@ -1,1 +1,7 @@
-
+parameters:
+  steward:
+    additional_facts:
+      blub: blub
+      blubobj:
+        blub: blub
+      deleted_blub: null
