@@ -70,8 +70,24 @@ local deployment = kube.Deployment('steward') {
   },
 };
 
+local additionalFacts = kube.ConfigMap('additional-facts') {
+  metadata+: {
+    namespace: params.namespace,
+    labels: {
+      'app.kubernetes.io/name': 'steward',
+      'app.kubernetes.io/managed-by': 'syn',
+    },
+  },
+  data: std.mapWithKey(
+    function(_, v)
+      if std.isString(v) then v else std.manifestJsonMinified(v),
+    std.prune(params.additional_facts)
+  ),
+};
+
 {
   '01_rbac': [ cluster_role, service_account, cluster_role_binding ],
   '05_secret': secret,
   '10_deployment': deployment,
+  '20_additional_facts': additionalFacts,
 }

@@ -17,3 +17,5 @@ parameters:
       argocd:
         image: quay.io/argoproj/argocd
         tag: 'v2.3.12@sha256:57474c3c31d2e3606e9c7dad2e449e604a48ac8e9aaaa413274aed41e6550e59'
+
+    additional_facts: {}
