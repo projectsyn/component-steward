@@ -10,7 +10,7 @@
       "test_cases": "defaults",
       "add_lib": "n",
       "add_pp": "n",
-      "add_golden": "n",
+      "add_golden": "y",
       "add_matrix": "n",
       "add_go_unit": "n",
       "copyright_holder": "VSHN AG <info@vshn.ch>",
