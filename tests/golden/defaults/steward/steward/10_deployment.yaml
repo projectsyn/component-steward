@@ -46,7 +46,7 @@ spec:
                 secretKeyRef:
                   key: token
                   name: steward
-          image: docker.io/projectsyn/steward:v0.10.1@sha256:9452d131d4b6f9602a2cb12888a99c078206102ca26f291676b2179ea7ca31a1
+          image: docker.io/projectsyn/steward:v0.11.0@sha256:233bdae7860eeb6e8402d13c9479496c03ff7b6630bfce4a5d3911af6ffc989d
           imagePullPolicy: Always
           name: steward
           ports: []
