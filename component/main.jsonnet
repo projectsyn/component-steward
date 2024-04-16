@@ -64,6 +64,7 @@ local deployment = kube.Deployment('steward') {
             },
           },
         },
+        priorityClassName: params.priority_class,
         serviceAccountName: service_account.metadata.name,
       },
     },
