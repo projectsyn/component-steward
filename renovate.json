@@ -24,7 +24,8 @@
       "matchUpdateTypes": ["patch"],
       "matchCurrentVersion": ">=1.0.0",
       "automerge": true,
-      "platformAutomerge": false
+      "platformAutomerge": false,
+      "labels": ["automerge"]
     }
   ]
 }
