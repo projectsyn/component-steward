@@ -22,10 +22,13 @@
   "packageRules": [
     {
       "matchUpdateTypes": ["patch"],
-      "matchCurrentVersion": ">=1.0.0",
+      "matchCurrentVersion": "!/^v?0\\./",
       "automerge": true,
       "platformAutomerge": false,
-      "labels": ["automerge"]
+      "labels": [
+        "dependency",
+        "automerge"
+      ]
     }
   ]
 }
