@@ -33,7 +33,7 @@ spec:
             - name: STEWARD_API
               value: https://api.syn.vshn.net/
             - name: STEWARD_ARGO_IMAGE
-              value: quay.io/argoproj/argocd:v2.9.19@sha256:6f7f36dde6ed18c7169cbec7a1d97f8ab28bd7b2097e16004bb7382b270d180d
+              value: quay.io/argoproj/argocd:v2.9.20@sha256:c203ff17d385cdd6d20764b86e76f7cfa544d790ea95e2a0519f08bde2d13682
             - name: STEWARD_CLUSTER_ID
               value: c-green-test-1234
             - name: STEWARD_NAMESPACE
