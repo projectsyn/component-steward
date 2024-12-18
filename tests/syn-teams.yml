@@ -1,0 +1,26 @@
+applications:
+  - argocd
+  - metallb
+  - cert-manager
+  - keycloak as keycloak-dev
+  - keycloak as keycloak-prod
+  - steward
+
+parameters:
+  syn:
+    owner: sparkling-sound
+    teams:
+      cool-glade:
+        instances:
+          - keycloak-dev
+          - keycloak-prod
+      purple-smoke:
+        instances:
+          - ~rook-ceph
+      shy-thunder:
+        instances:
+          - cert-manager
+          - metallb
+      sparkling-sound:
+        instances:
+          - argocd

@@ -1,17 +1,17 @@
 {
   "template": "https://github.com/projectsyn/commodore-component-template.git",
-  "commit": "8840f87d25d97ce0d4bfed75d40173caaf4100fc",
+  "commit": "ff9d5a839714344345b76be069ea23e39e580f38",
   "checkout": "main",
   "context": {
     "cookiecutter": {
       "name": "Steward",
       "slug": "steward",
       "parameter_key": "steward",
-      "test_cases": "defaults",
+      "test_cases": "defaults syn-teams",
       "add_lib": "n",
       "add_pp": "n",
       "add_golden": "y",
-      "add_matrix": "n",
+      "add_matrix": "y",
       "add_go_unit": "n",
       "automerge_patch": "y",
       "automerge_patch_v0": "n",
