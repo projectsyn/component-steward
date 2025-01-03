@@ -16,7 +16,7 @@ parameters:
         tag: 'v0.11.1@sha256:dba13cfdfdf6c1db4ed7bbef109d44ab1d6b16fa70e1835c33b97b9ae64b1af9'
       argocd:
         image: quay.io/argoproj/argocd
-        tag: 'v2.13.2@sha256:1322e91b758b9d44db3af44f457c298831c57a8e1d635118910d35e71f822646'
+        tag: 'v2.13.3@sha256:42a488667bc07b70b16a672f632a5d3f484a262ae5f66b5d161c5be2d905db2f'
 
     priority_class: system-cluster-critical
     additional_facts: {}
