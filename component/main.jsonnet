@@ -2,6 +2,8 @@
 local com = import 'lib/commodore.libjsonnet';
 local kap = import 'lib/kapitan.libjsonnet';
 local kube = import 'lib/kube.libjsonnet';
+local syn_teams = import 'syn/syn-teams.libsonnet';
+
 local inv = kap.inventory();
 // The hiera parameters for the component
 local params = inv.parameters.steward;
@@ -86,9 +88,24 @@ local additionalFacts = kube.ConfigMap('additional-facts') {
   ),
 };
 
+local additionalRootApps =
+  kube.ConfigMap('additional-root-apps') {
+    metadata+: {
+      namespace: params.namespace,
+      labels: {
+        'app.kubernetes.io/name': 'steward',
+        'app.kubernetes.io/managed-by': 'syn',
+      },
+    },
+    data: {
+      teams: std.manifestJsonMinified(syn_teams.teams()),
+    },
+  };
+
 {
   '01_rbac': [ cluster_role, service_account, cluster_role_binding ],
   '05_secret': secret,
   '10_deployment': deployment,
   '20_additional_facts': additionalFacts,
+  '20_additional_root_apps': additionalRootApps,
 }
