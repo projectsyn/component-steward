@@ -29,13 +29,27 @@
         "patch",
         "digest"
       ],
-      "matchCurrentVersion": "!/^v?0\\./",
       "automerge": true,
       "platformAutomerge": false,
       "labels": [
         "dependency",
         "automerge",
         "bump:patch"
+      ]
+    },
+    {
+      "matchUpdateTypes": [
+        "minor"
+      ],
+      "automerge": true,
+      "platformAutomerge": false,
+      "labels": [
+        "dependency",
+        "automerge",
+        "bump:minor"
+      ],
+      "matchPackagePatterns": [
+        "^docker.io/projectsyn/steward$",
       ]
     }
   ]
