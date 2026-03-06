@@ -49,7 +49,7 @@
         "bump:minor"
       ],
       "matchPackagePatterns": [
-        "docker.io/projectsyn/steward"
+        "^docker.io/projectsyn/steward$",
       ]
     }
   ]

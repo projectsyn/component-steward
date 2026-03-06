@@ -17,7 +17,7 @@
       "automerge_patch_v0": "y",
       "automerge_patch_regexp_blocklist": "",
       "automerge_patch_v0_regexp_allowlist": "",
-      "automerge_minor_regexp_allowlist": "docker.io/projectsyn/steward",
+      "automerge_minor_regexp_allowlist": "^docker.io/projectsyn/steward$",
       "auto_release": "y",
       "copyright_holder": "VSHN AG <info@vshn.ch>",
       "copyright_year": "2021",
