@@ -29,7 +29,6 @@
         "patch",
         "digest"
       ],
-      "matchCurrentVersion": "!/^v?0\\./",
       "automerge": true,
       "platformAutomerge": false,
       "labels": [
