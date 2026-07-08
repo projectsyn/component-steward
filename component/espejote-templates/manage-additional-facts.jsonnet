@@ -1,13 +1,16 @@
 local esp = import 'espejote.libsonnet';
 
+local facts = import 'steward-additional-facts/facts.json';
+local namespace = import 'steward-additional-facts/namespace.json';
+
 local filterConfigmaps(configmaps) =
   local nameField = function(obj) obj.metadata.name;
   std.filter(
-    function(obj) std.objectHas(obj.data, 'spec'),
+    function(obj) std.objectHas(obj.data, 'facts'),
     std.sort(configmaps, nameField)
   );
 
-local configmaps = filterConfigmaps(esp.context().configmaps);
+local configmapsFacts = filterConfigmaps(esp.context().configmap_facts);
 
 // Builds a new object from its input.
 // All keys which contain an object or array will be suffixed with `+` in the result.
@@ -37,12 +40,24 @@ local targetMetadata(configmaps) =
     labels+: {
       'app.kubernetes.io/managed-by': 'espejote',
     },
+    name: 'additional-facts',
+    namespace: namespace.name,
   };
 
+local mergeFacts(configmaps, facts) =
+  local cmFacts = std.map(
+    function(obj) std.parseJson(std.get(obj.data, 'facts', '')),
+    configmaps
+  );
+  std.foldl(
+    function(a, b) a + makeMergeable(b),
+    cmFacts + [ facts ],
+    {}
+  );
 
-[
-  kube.Configmap('additional-facts') {
-    metadata+: targetMetadata(configmaps),
-    data: // todo merge all keys
-  },
-]
+{
+  apiVersion: 'v1',
+  kind: 'ConfigMap',
+  metadata: targetMetadata(configmapsFacts),
+  data: mergeFacts(configmapsFacts, facts),
+}

@@ -1,0 +1,40 @@
+# Use ConfigMap to merge Additional Facts
+
+This component is managing Stewards `additional-facts` configmap.
+
+Other components can create `ConfigMaps` with their own facts.
+The `ManagedResource` will merge the facts of these `ConfigMaps` into the final configuration.
+
+If multiple configmaps are setting the same field, configmap precedence is determined by ascibetically sorting the configmaps by their `metadata.name`.
+Configmaps which sort later have higher precedence.
+Values set through the component parameters have higher precedence than any values set through configmaps.
+
+
+== Example
+
+Create a `ConfigMap` in your component:
+
+[source,yaml]
+----
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  labels:
+    steward.syn.tools/include-facts: "" <1>
+  name: cilium-facts <2>
+  namespace: syn <3>
+data: <4>
+  facts: |-
+    {
+        "cilium_egress_ip": true  // eg. if you want to query lieutenant if a cluster has cilium egress ip configured
+    }
+----
+<1> Label the `ConfigMap` so it's picked up by the `ManagedResource`, see xref:references/parameters.adoc#_additional_facts_config_label[Parameters] for the values.
+<2> The `ConfigMaps` will get sorted by their name before merging.
+<3> Apply the `ConfigMap` to the `syn` namespace.
+<4> Use the key `facts` for your configuration
+
+[IMPORTANT]
+====
+The configuration from xref:references/parameters.adoc#_additional_facts[this component] will take precendence over any `ConfigMaps`.
+====

@@ -77,6 +77,23 @@ Additional facts to be added to the dynamic facts Steward provides to Lieutenant
 Objects are serialized to JSON.
 Dynamic facts implemented in Steward can't be overridden.
 
+== `additional_facts_config_label`
+
+[horizontal]
+type:: string
+default:: `steward.syn.tools/include-facts`
+
+Other components can create configmaps in the `syn` namespace with their own spec for the `additional-facts` configmap.
+If they label those configmaps with these keys, they get merged into the final configuration.
+
+For more information, see xref:how-tos/additional-facts.adoc[].
+
+[IMPORTANT]
+====
+The ManagedResource collects all configmaps and sorts them by name before merging the specs into the configuration.
+The config specified in this component will have precedence over any conflicting config in the configmaps.
+====
+
 == Example
 
 [source,yaml]
