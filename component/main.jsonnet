@@ -8,6 +8,9 @@ local inv = kap.inventory();
 // The hiera parameters for the component
 local params = inv.parameters.steward;
 
+// Check if espejote is installed and resources are configured
+local hasEspejote = std.member(inv.applications, 'espejote');
+
 local cluster_role = kube.ClusterRole('syn-admin') {
   rules: [
     { apiGroups: [ '*' ], resources: [ '*' ], verbs: [ '*' ] },
@@ -73,20 +76,22 @@ local deployment = kube.Deployment('steward') {
   },
 };
 
-local additionalFacts = kube.ConfigMap('additional-facts') {
-  metadata+: {
-    namespace: params.namespace,
-    labels: {
-      'app.kubernetes.io/name': 'steward',
-      'app.kubernetes.io/managed-by': 'syn',
+local additionalFacts =
+  if hasEspejote then import 'additional-facts.libsonnet'
+  else kube.ConfigMap('additional-facts') {
+    metadata+: {
+      namespace: params.namespace,
+      labels: {
+        'app.kubernetes.io/name': 'steward',
+        'app.kubernetes.io/managed-by': 'syn',
+      },
     },
-  },
-  data: std.mapWithKey(
-    function(_, v)
-      if std.isString(v) then v else std.manifestJsonMinified(v),
-    std.prune(params.additional_facts)
-  ),
-};
+    data: std.mapWithKey(
+      function(_, v)
+        if std.isString(v) then v else std.manifestJsonMinified(v),
+      std.prune(params.additional_facts)
+    ),
+  };
 
 local additionalRootApps =
   kube.ConfigMap('additional-root-apps') {
