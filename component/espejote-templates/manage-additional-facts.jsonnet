@@ -59,5 +59,8 @@ local mergeFacts(configmaps, facts) =
   apiVersion: 'v1',
   kind: 'ConfigMap',
   metadata: targetMetadata(configmapsFacts),
-  data: mergeFacts(configmapsFacts, facts),
+  data: std.mapWithKey(
+    function(_, v) if std.isString(v) then v else std.manifestJsonMinified(v),
+    std.prune(mergeFacts(configmapsFacts, facts))
+  ),
 }
